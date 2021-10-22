@@ -7,6 +7,7 @@ def call(repo, branch, destination = ''){
 
    if(!branch  || branch == null){
       branch = 'main'
+      // above default branch name used to be master
    }
 
    dir(cloneDir){
