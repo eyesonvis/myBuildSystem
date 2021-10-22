@@ -57,19 +57,19 @@ def call(lvProjectPath, lvBuildSpecName, lvVersion, lvBitness) {
 				}
 		}
 
-		echo 'Running unit tests...'
+		//echo 'Running unit tests...'
 		
-		stage ('Unit Tests') {
-			try {
-				timeout(time: 60, unit: 'MINUTES') {
-					lvUtf(lvProjectPath, lvVersion, lvBitness)
-					echo 'Unit tests Succeeded!'
-				}
-				} catch (err) {
-					currentBuild.result = "SUCCESS"
-					echo "Unit Tests Failed: ${err}"
-				}
-		}
+		//stage ('Unit Tests') {
+		//	try {
+		//		timeout(time: 60, unit: 'MINUTES') {
+		//			lvUtf(lvProjectPath, lvVersion, lvBitness)
+		//			echo 'Unit tests Succeeded!'
+		//		}
+		//		} catch (err) {
+		//			currentBuild.result = "SUCCESS"
+		//			echo "Unit Tests Failed: ${err}"
+		//		}
+		//}
 		
 		withCredentials([string(credentialsId: 'github-access-token', variable: 'accessToken')]) {
 			
