@@ -9,5 +9,6 @@ def call(lvVersion, lvBitness, accessToken) {
 
 	bat "python -u \"${stepsDir}\\labview_diff.py\" \"${operationsDir}\\\\\" \"${diffDir}\\\\\" ${lvVersion} ${lvBitness} --target=origin/main"
     
+	echo 'Posting GitHub comment'
 	bat "python -u \"${stepsDir}\\github_commenter.py\" --token=\"${accessToken}\" --pic-dir=\"${diffDir}\" --pull-req=\"${env.CHANGE_ID}\" --info=\"${ORG_NAME}/${repo}/${env.CHANGE_ID}\" --pic-repo=\"${ORG_NAME}/${PIC_REPO}\""
 }
